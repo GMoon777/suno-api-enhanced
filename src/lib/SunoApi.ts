@@ -17,7 +17,7 @@ import {
 import { createCursor, Cursor } from 'ghost-cursor-playwright';
 import { promises as fs } from 'fs';
 import path from 'node:path';
-
+//forked from https://github.com/gcui-art/suno-api
 // sunoApi instance caching
 const globalForSunoApi = global as unknown as {
   sunoApiCache?: Map<string, SunoApi>;
@@ -415,9 +415,8 @@ class SunoApi {
           this.click(frame.locator('.button-submit')).catch((e) => {
             if (e.message.includes('viewport'))
               // when hCaptcha window has been closed due to inactivity,
-              this.click(
-                button
-              ); // click the Create button again to trigger the CAPTCHA
+              this.click(button);
+            // click the Create button again to trigger the CAPTCHA
             else throw e;
           });
         }
